@@ -1,6 +1,6 @@
 export default function AddTask() {
   return (
-    <div className="w-1/3 bg-blue-100 min-h-screen">
+    <div className="w-1/2 bg-blue-100 min-h-screen">
       <h1 className="text-2xl pt-4 text-center font-bold pb-2">
         Add a new task
       </h1>
