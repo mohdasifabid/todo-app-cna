@@ -4,6 +4,7 @@ import { useState } from "react";
 export function TodosListingPage() {
   return (
     <div className="w-1/2 bg-green-100 p-2 ">
+      <h1 className="text-2xl pt-4 text-center font-bold pb-4">My Todos</h1>
       <div className="border-2 border-solid border-black  p-3 flex justify-between">
         <div>
           <p>Title</p>
