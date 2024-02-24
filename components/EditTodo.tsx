@@ -1,7 +1,10 @@
-export function EditTodo() {
+export function EditTodo({ setIsModalOpen }:any) {
   return (
-    <div className="w-1/2 border-4 border-solid border-white relative">
-      <button className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md absolute top-1 right-1">
+    <div className="w-1/2 border-4 border-solid border-white relative bg-red-200">
+      <button
+        onClick={() => setIsModalOpen(false)}
+        className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md absolute top-1 right-1"
+      >
         Close
       </button>
       <div>
