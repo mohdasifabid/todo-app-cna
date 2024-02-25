@@ -31,7 +31,7 @@ export function EditTodo(props: any) {
   });
 
   return (
-    <div className="w-1/2 border-4 border-solid border-white relative bg-red-200 p-2">
+    <div className="w-1/2 border-4 border-solid border-white relative bg-gray-300 p-2">
       <button
         onClick={() => setIsModalOpen(false)}
         className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md absolute top-1 right-1"
