@@ -1,13 +1,10 @@
 "use client";
-import { Todo, Payload } from "@/types";
-import {
-  QueryClient,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+
 import axios from "axios";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+import { Payload } from "@/types";
 const endPoint = "https://todo-app-be-u8g0.onrender.com/api/todos";
 
 export default function AddTask() {
@@ -15,6 +12,7 @@ export default function AddTask() {
   const [content, setContent] = useState("");
   const [label, setLabel] = useState("");
   const queryClient = useQueryClient();
+
   async function addTaskHandler() {
     const response = await axios.post(endPoint, { title, content, label });
     setTitle("");
@@ -23,7 +21,7 @@ export default function AddTask() {
     return response;
   }
 
-  const { mutate, isLoading, isError } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: addTaskHandler,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["todos"] }),
   });
@@ -33,7 +31,14 @@ export default function AddTask() {
     content,
     label,
   };
+
   const isFieldEmpty = !title && !content && !label;
+
+  const onCancelHandler = () => {
+    setTitle("");
+    setContent("");
+    setLabel("");
+  };
   return (
     <div className="w-1/2 bg-blue-100 min-h-screen pl-5 pr-5">
       <h1 className="text-2xl pt-4 text-center font-bold pb-2">
@@ -68,19 +73,15 @@ export default function AddTask() {
       <div className="flex justify-end p-2 gap-3">
         <button
           className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md"
-          disabled={isLoading}
-          onClick={() => {
-            setTitle("");
-            setContent("");
-            setLabel("");
-          }}
+          disabled={isPending}
+          onClick={onCancelHandler}
         >
           Cancel
         </button>
-        <button 
+        <button
           className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md"
           onClick={() => mutate(payload)}
-          disabled={isLoading || isFieldEmpty}
+          disabled={isPending || isFieldEmpty}
         >
           Add
         </button>
