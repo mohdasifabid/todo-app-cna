@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
 export const TodoCard = (props: Props) => {
-  const { setIsModalOpen, data } = props;
+  const { setIsModalOpen, data, setEditingTodoObj } = props;
   const { title, content, label, _id } = data;
 
   const queryClient = useQueryClient();
@@ -28,7 +28,10 @@ export const TodoCard = (props: Props) => {
       <div>
         <button
           className="border pt-1 pl-3 pr-3 pb-1 bg-black text-white rounded-md"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setIsModalOpen(true);
+            setEditingTodoObj(data);
+          }}
         >
           Edit
         </button>

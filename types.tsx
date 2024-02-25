@@ -7,6 +7,7 @@ export interface Todo {
 export interface Props {
   data: Todo;
   setIsModalOpen: any;
+  setEditingTodoObj: any;
 }
 export interface Payload {
   title: String;

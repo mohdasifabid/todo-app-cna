@@ -11,8 +11,8 @@ const endPoint = "https://todo-app-be-u8g0.onrender.com/api/todos";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingTodoObj, setEditingTodoObj] = useState({});
 
-  
   const getData = async () => {
     const res = await axios.get(endPoint);
     return res.data;
@@ -31,10 +31,14 @@ export default function Home() {
   return (
     <main className="flex min-h-screen">
       <AddTask />
-      <TodosListingPage setIsModalOpen={setIsModalOpen} data={data} />
+      <TodosListingPage
+        setIsModalOpen={setIsModalOpen}
+        data={data}
+        setEditingTodoObj={setEditingTodoObj}
+      />
       {isModalOpen && (
         <div className="absolute w-full min-h-screen flex justify-center items-center">
-          <EditTodo setIsModalOpen={setIsModalOpen} />
+          <EditTodo setIsModalOpen={setIsModalOpen} data={editingTodoObj} />
         </div>
       )}
     </main>
