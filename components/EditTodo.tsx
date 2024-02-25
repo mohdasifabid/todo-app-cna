@@ -1,8 +1,8 @@
 "use client";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export function EditTodo(props: any) {
   const { data, setIsModalOpen } = props;
@@ -11,21 +11,25 @@ export function EditTodo(props: any) {
   const [updatedContent, setUpdatedContent] = useState(content);
   const [updatedLabel, setUpdatedLabel] = useState(label);
   const queryClient = useQueryClient();
+
   const payload = {
     title: updatedTitle,
     content: updatedContent,
     label: updatedLabel,
   };
+
   const updateTodoHandler = async () => {
     const endPoint = `https://todo-app-be-u8g0.onrender.com/api/todos/${_id}`;
     const res = await axios.put(endPoint, payload);
     setIsModalOpen(false);
     return res;
   };
+
   const { mutate } = useMutation({
     mutationFn: updateTodoHandler,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["todos"] }),
   });
+
   return (
     <div className="w-1/2 border-4 border-solid border-white relative bg-red-200 p-2">
       <button
