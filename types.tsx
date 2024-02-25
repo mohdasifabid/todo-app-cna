@@ -8,3 +8,8 @@ export interface Props {
   data: Todo;
   setIsModalOpen: any;
 }
+export interface Payload {
+  title: String;
+  content: String;
+  label: String;
+}
