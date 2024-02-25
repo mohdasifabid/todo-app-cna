@@ -30,7 +30,6 @@ export default function Home() {
       </main>
     );
   }
-  
   return (
     <main className="flex min-h-screen">
       <AddTask />
