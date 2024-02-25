@@ -1,6 +1,7 @@
 "use client";
 import { Todo } from "@/types";
 import { TodoCard } from "./TodoCard";
+import { Pagination } from "./Pagination";
 
 export function TodosListingPage({ setIsModalOpen, data, setEditingTodoObj }: any) {
   return (
@@ -16,6 +17,7 @@ export function TodosListingPage({ setIsModalOpen, data, setEditingTodoObj }: an
           />
         );
       })}
+      <Pagination totalTodos={5}/>
     </div>
   );
 }
