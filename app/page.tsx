@@ -1,12 +1,12 @@
 "use client";
-import { EditTodo } from "@/components/EditTodo";
-import Sidebar from "@/components/Sidebar";
 import { TodosListingPage } from "@/components/TodosListingPage";
-import AddTask from "@/components/addTask";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
-import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import axios from "axios";
+
+import { EditTodo } from "@/components/EditTodo";
+import AddTask from "@/components/addTask";
+
 const endPoint = "https://todo-app-be-u8g0.onrender.com/api/todos";
 
 export default function Home() {
@@ -17,10 +17,12 @@ export default function Home() {
     const res = await axios.get(endPoint);
     return res.data;
   };
+
   const { isPending, error, data } = useQuery({
     queryKey: ["todos"],
     queryFn: getData,
   });
+
   if (isPending) {
     return (
       <main className="flex min-h-screen justify-center items-center">
@@ -28,6 +30,7 @@ export default function Home() {
       </main>
     );
   }
+  
   return (
     <main className="flex min-h-screen">
       <AddTask />
