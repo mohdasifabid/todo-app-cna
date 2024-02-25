@@ -35,7 +35,7 @@ export default function AddTask() {
   };
   const isFieldEmpty = !title && !content && !label;
   return (
-    <div className="w-1/2 bg-blue-100 min-h-screen">
+    <div className="w-1/2 bg-blue-100 min-h-screen pl-5 pr-5">
       <h1 className="text-2xl pt-4 text-center font-bold pb-2">
         Add a new task
       </h1>
