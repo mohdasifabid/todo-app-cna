@@ -7,19 +7,20 @@ import axios from "axios";
 import { EditTodo } from "@/components/EditTodo";
 import AddTask from "@/components/addTask";
 
-const endPoint = "https://todo-app-be-u8g0.onrender.com/api/todos";
-
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingTodoObj, setEditingTodoObj] = useState({});
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+
+  const queryEndPoint = `https://todo-app-be-u8g0.onrender.com/api/todos?page=${currentPageNumber}&pageSize=5`;
 
   const getData = async () => {
-    const res = await axios.get(endPoint);
+    const res = await axios.get(queryEndPoint);
     return res.data;
   };
 
   const { isPending, error, data } = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["todos", { page: currentPageNumber }],
     queryFn: getData,
   });
 
@@ -37,6 +38,7 @@ export default function Home() {
         setIsModalOpen={setIsModalOpen}
         data={data}
         setEditingTodoObj={setEditingTodoObj}
+        setCurrentPageNumber={setCurrentPageNumber}
       />
       {isModalOpen && (
         <div className="absolute w-full min-h-screen flex justify-center items-center">
