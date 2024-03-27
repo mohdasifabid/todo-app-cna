@@ -1,6 +1,12 @@
 # Project README
 
-This project is a Todo application created using Create Next App, with various technologies to enhance the development process.
+This project is a Todo application created using Create Next App.
+[BE Repo](https://github.com/mohdasifabid/todo-app-be)
+[Todo App Link](https://todo-app-cna.vercel.app/)
+
+Tech-stack : Nextjs, TypeScript, Tailwind CSS, React-Query NodeJS, Mongodb, Express, mongoose, 
+
+Features: Create, Delete, Update operations, Paginations
 
 ## Technologies Used
 
