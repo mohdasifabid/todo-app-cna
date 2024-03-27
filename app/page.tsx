@@ -1,4 +1,5 @@
 "use client";
+
 import { TodosListingPage } from "@/components/TodosListingPage";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -31,6 +32,7 @@ export default function Home() {
       </main>
     );
   }
+  
   return (
     <main className="flex min-h-screen">
       <AddTask />
